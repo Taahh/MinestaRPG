@@ -1,0 +1,10 @@
+name: MinestaRPG
+author: taahanis
+main: me.taahanis.minestarpg.MinestaRPG
+description: rpg for ms
+version: 1.0
+api-version: 1.13
+commands:
+  model:
+    description: model cmd
+    usage: /<command> <model>
