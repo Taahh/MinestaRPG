@@ -18,18 +18,7 @@ public class Elf {
         this.config = new File(plugin.getDataFolder(), "elves.yml");
         this.configYaml = YamlConfiguration.loadConfiguration(config);
     }
-    public Elf(Player player)
-    {
-        String name = player.getName();
-        String ip = player.getAddress().getHostName();
-        String uuid = player.getUniqueId().toString();
-        int level = 1;
 
-        configYaml.set("elves." + uuid + ".name", name);
-        configYaml.set("elves." + uuid + ".ip", ip);
-        configYaml.set("elves." + uuid + ".level", String.valueOf(level));
-        save();
-    }
 
     public void setup()
     {

@@ -18,18 +18,7 @@ public class Human {
         this.config = new File(plugin.getDataFolder(), "humans.yml");
         this.configYaml = YamlConfiguration.loadConfiguration(config);
     }
-    public Human(Player player)
-    {
-        String name = player.getName();
-        String ip = player.getAddress().getHostName();
-        String uuid = player.getUniqueId().toString();
-        int level = 1;
 
-        configYaml.set("humans." + uuid + ".name", name);
-        configYaml.set("humans." + uuid + ".ip", ip);
-        configYaml.set("humans." + uuid + ".level", String.valueOf(level));
-        save();
-    }
 
     public void setup()
     {

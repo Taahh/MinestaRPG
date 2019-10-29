@@ -18,18 +18,7 @@ public class Wizard {
             this.config = new File(plugin.getDataFolder(), "wizards.yml");
             this.configYaml = YamlConfiguration.loadConfiguration(config);
         }
-        public Wizard(Player player)
-        {
-            String name = player.getName();
-            String ip = player.getAddress().getHostName();
-            String uuid = player.getUniqueId().toString();
-            int level = 1;
 
-            configYaml.set("wizards." + uuid + ".name", name);
-            configYaml.set("wizards." + uuid + ".ip", ip);
-            configYaml.set("wizards." + uuid + ".level", String.valueOf(level));
-            save();
-        }
 
         public void setup()
         {

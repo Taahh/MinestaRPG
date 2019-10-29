@@ -16,6 +16,18 @@ public class RacePicker {
     {
         i = Bukkit.getServer().createInventory(null, 9, "  §b§l~~~ §c§lRace Selector §b§l~~~"); //0 - elf, 1, 2, 3, 4 - human, 5, 6, 7, 8 - wizard
 
+
+
+        i.setItem(0, Elf());
+        i.setItem(4, Human());
+        i.setItem(8, Wizard());
+    }
+    public Inventory getI() {
+        return i;
+    }
+
+    public ItemStack Elf()
+    {
         ItemStack elf = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta elfMeta = elf.getItemMeta();
         assert elfMeta != null;
@@ -23,15 +35,11 @@ public class RacePicker {
         elfMeta.addEnchant(Enchantment.LUCK, 100, true);
         elfMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         elf.setItemMeta(elfMeta);
+        return elf;
+    }
 
-        ItemStack wizard = new ItemStack(Material.BLAZE_ROD, 1);
-        ItemMeta wizardMeta = wizard.getItemMeta();
-        assert wizardMeta != null;
-        wizardMeta.setDisplayName("§5§lWizard");
-        wizardMeta.addEnchant(Enchantment.MENDING, 100, true);
-        wizardMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        wizard.setItemMeta(wizardMeta);
-
+    public ItemStack Human()
+    {
         ItemStack human = new ItemStack(Material.PLAYER_HEAD, 1);
         ItemMeta humanMeta = human.getItemMeta();
         assert humanMeta != null;
@@ -39,12 +47,18 @@ public class RacePicker {
         humanMeta.addEnchant(Enchantment.OXYGEN, 100, true);
         humanMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         human.setItemMeta(humanMeta);
-
-        i.setItem(0, elf);
-        i.setItem(4, human);
-        i.setItem(8, wizard);
+        return human;
     }
-    public Inventory getI() {
-        return i;
+
+    public ItemStack Wizard()
+    {
+        ItemStack wizard = new ItemStack(Material.BLAZE_ROD, 1);
+        ItemMeta wizardMeta = wizard.getItemMeta();
+        assert wizardMeta != null;
+        wizardMeta.setDisplayName("§5§lWizard");
+        wizardMeta.addEnchant(Enchantment.MENDING, 100, true);
+        wizardMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        wizard.setItemMeta(wizardMeta);
+        return wizard;
     }
 }
