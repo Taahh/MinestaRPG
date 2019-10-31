@@ -45,6 +45,9 @@ public class Human {
     }
 
     public YamlConfiguration getConfigYaml() {
-        return configYaml;
+
+        File f = new File(plugin.getDataFolder(), "humans.yml");
+        YamlConfiguration y = YamlConfiguration.loadConfiguration(f);
+        return y;
     }
 }

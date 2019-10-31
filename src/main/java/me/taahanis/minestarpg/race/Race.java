@@ -2,6 +2,7 @@ package me.taahanis.minestarpg.race;
 
 
 import me.taahanis.minestarpg.MinestaRPG;
+import me.taahanis.minestarpg.classes.HumanClass;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.yaml.snakeyaml.Yaml;
@@ -65,7 +66,7 @@ public class Race {
         }
     }
 
-    public void newHuman(Player player)
+    public void newHuman(Player player, HumanClass c)
     {
         String name = player.getName();
         String ip = player.getAddress().getHostName();
@@ -74,6 +75,7 @@ public class Race {
         File f = new File(pl.getDataFolder(), "humans.yml");
         YamlConfiguration configYaml = YamlConfiguration.loadConfiguration(f);
         configYaml.set("humans." + uuid + ".name", name);
+        configYaml.set("humans." + uuid + ".type", c.getName());
         configYaml.set("humans." + uuid + ".ip", ip);
         configYaml.set("humans." + uuid + ".level", String.valueOf(level));
         try {
@@ -81,5 +83,16 @@ public class Race {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean isHuman(Player p) {
+        File f = new File(pl.getDataFolder(), "humans.yml");
+        YamlConfiguration configYaml = YamlConfiguration.loadConfiguration(f);
+        String uuid = p.getUniqueId().toString();
+        String entry = configYaml.getString("humans." + uuid);
+        if (entry == null) {
+            return false;
+        }
+        return true;
     }
 }

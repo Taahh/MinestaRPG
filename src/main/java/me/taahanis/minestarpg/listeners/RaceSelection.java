@@ -48,9 +48,7 @@ public class RaceSelection implements Listener {
             if (item.hasItemMeta() && item.getItemMeta().getDisplayName().equalsIgnoreCase("§6§lHuman"))
             {
                 event.setCancelled(true);
-                pl.race.newHuman(p);
-                p.closeInventory();
-                p.sendMessage("§6[§4MinestaRPG§6] §aYou are now a " + pl.rP.Human().getItemMeta().getDisplayName());
+                p.openInventory(pl.hCp.getI());
                 return;
             }
             if (item.hasItemMeta() && item.getItemMeta().getDisplayName().equalsIgnoreCase("§5§lWizard"))
