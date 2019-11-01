@@ -1,5 +1,6 @@
 package me.taahanis.minestarpg;
 
+import me.taahanis.minestarpg.command.Command_spawnnpc;
 import me.taahanis.minestarpg.config.Config;
 import me.taahanis.minestarpg.config.Elf;
 import me.taahanis.minestarpg.config.Human;
@@ -8,11 +9,11 @@ import me.taahanis.minestarpg.inventories.HumanClassPicker;
 import me.taahanis.minestarpg.inventories.RacePicker;
 import me.taahanis.minestarpg.listeners.ClassSelection;
 import me.taahanis.minestarpg.listeners.FakePlugins;
-import me.taahanis.minestarpg.listeners.NametagListener;
 import me.taahanis.minestarpg.listeners.RaceSelection;
 import me.taahanis.minestarpg.race.Race;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Score;
+
+//import me.taahanis.minestarpg.listeners.NametagListener;
 
 public class MinestaRPG extends JavaPlugin {
 
@@ -27,7 +28,7 @@ public class MinestaRPG extends JavaPlugin {
     public RacePicker rP;
     public HumanClassPicker hCp;
 
-    public ScoreboardThings sCT;
+    //public ScoreboardThings sCT;
 
     @Override
     public void onLoad()
@@ -43,7 +44,7 @@ public class MinestaRPG extends JavaPlugin {
         rP = new RacePicker();
         hCp = new HumanClassPicker();
 
-        sCT = new ScoreboardThings();
+        //sCT = new ScoreboardThings();
 
         config.setup();
 
@@ -57,6 +58,7 @@ public class MinestaRPG extends JavaPlugin {
     public void onEnable()
     {
         regListeners();
+        regCommands();
     }
 
     public void regListeners()
@@ -64,7 +66,11 @@ public class MinestaRPG extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new RaceSelection(), this);
         getServer().getPluginManager().registerEvents(new FakePlugins(), this);
         getServer().getPluginManager().registerEvents(new ClassSelection(), this);
-        getServer().getPluginManager().registerEvents(new NametagListener(), this);
+        //getServer().getPluginManager().registerEvents(new NametagListener(), this);
+    }
+    public void regCommands()
+    {
+        getCommand("spawnnpc").setExecutor(new Command_spawnnpc());
     }
 
 }
